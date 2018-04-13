@@ -1,12 +1,19 @@
 # coding:utf-8
 import unittest
 import requests
-from common.logger import Log
+import logging
 # 禁用安全请求警告
 # from requests.packages.urllib3.exceptions import
 # requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-class Blog_login(unittest.TestCase):
+class test_order(unittest.TestCase):
+    #logger = logging.getLogger(__name__)
+
+    def __init__(self, *args, **kwargs):
+        super(test_order, self).__init__(*args, **kwargs)
+        self.logger = logging.getLogger(__name__)
+
+        print(self.logger)
 
 
     def setUp(self):
@@ -24,6 +31,7 @@ class Blog_login(unittest.TestCase):
 
 
         self.result = r.json()  # 字节输出
+        self.logger.info("你好")
 
         print(type(self.result)) #dict
         self.assertEqual(self.result['status'], 0)
@@ -32,6 +40,10 @@ class Blog_login(unittest.TestCase):
 
 
         print(self.result['data'][0]['orderCode'])
+
+    def tearDown(self):
+
+        self.logger.info("结束")
 
 
 

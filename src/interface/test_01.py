@@ -1,13 +1,17 @@
 # coding:utf-8
 import unittest
 import requests
-from common.logger import Log
 # 禁用安全请求警告
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
-requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+import logging
+
 
 class Blog_login(unittest.TestCase):
-    log = Log()
+
+
+    def __init__(self, *args, **kwargs):
+        super(Blog_login, self).__init__(*args, **kwargs)
+        self.logger = logging.getLogger(__name__)
+
     def login(self, username, psw, reme=True):
         '''三个参数：
         账号：username，密码：psw,记住登录：reme=True'''
@@ -26,32 +30,32 @@ class Blog_login(unittest.TestCase):
 
         res = requests.post(url, headers=header, json=json_data, verify=False)
         result1 = res.content  # 字节输出
-        self.log.info("博客园登录结果：%s"%result1)
+        self.logger.info("博客园登录结果：%s"%result1)
         return res.json()      # 返回json
 
     def test_login1(self):
         u'''测试登录：正确账号，正确密码'''
-        self.log.info("------登录成功用例：start!---------")
+        self.logger.info("------登录成功用例：start!---------")
         username = "这里是抓包后获取的博客园的加密账号",
-        self.log.info("输入正确账号：%s"%username)
+        self.logger.info("输入正确账号：%s"%username)
         psw = "这里是抓包后获取的博客园的加密密码",
-        self.log.info("输入正确密码：%s"%psw )
+        self.logger.info("输入正确密码：%s"%psw )
         result = self.login(username, psw)
-        self.log.info("获取测试结果：%s"%result)
+        self.logger.info("获取测试结果：%s"%result)
         self.assertEqual(result["success"], True)
-        self.log.info("------pass!---------")
+        self.logger.info("------pass!---------")
 
     def test_login2(self):
         u'''测试登录：正确账号，错误密码'''
-        self.log.info("------登录失败用例：start!---------")
+        self.logger.info("------登录失败用例：start!---------")
         username = "这里是抓包后获取的博客园的加密账号",
-        self.log.info("输入正确账号：%s"%username)
+        self.logger.info("输入正确账号：%s"%username)
         psw = "xxx",
-        self.log.info("输入错误密码：%s"%username)
+        self.logger.info("输入错误密码：%s"%username)
         result = self.login(username, psw)
-        self.log.info("获取测试结果：%s"%result)
+        self.logger.info("获取测试结果：%s"%result)
         self.assertEqual(result["success"], False)
-        self.log.info("------pass!---------")
+        self.logger.info("------pass!---------")
 
 
 if __name__ == "__main__":
