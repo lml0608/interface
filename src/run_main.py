@@ -7,7 +7,7 @@ from email.mime.multipart import MIMEMultipart
 import smtplib
 import os
 import codecs
-from .config import readConfig
+from src.config import readConfig
 
 ####下面三行代码python2报告出现乱码时候可以加上####
 # import sys
