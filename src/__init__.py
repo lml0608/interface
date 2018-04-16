@@ -12,15 +12,15 @@ import time
 import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-print(BASE_DIR)
+# print(BASE_DIR)
 filepath = os.path.join(BASE_DIR,'config/logging.conf')
 
-print(filepath)
+# print(filepath)
 
 
 logging.config.fileConfig(filepath) # disable_existing_loggers=0
 
-logger = logging.getLogger(__name__)
+# logger = logging.getLogger(__name__)
 
 
 

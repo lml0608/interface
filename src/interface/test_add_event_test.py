@@ -30,7 +30,21 @@ class AddEventTest(unittest.TestCase):
 
         r = requests.post(self.base_url,data=payload)
 
+
         self.result = r.json()
+
+        self.assertEqual(self.result['status'],10021)
+        self.assertEqual(self.result['message'],'parameter error')
+
+    def test_add_event_eid_exist(self):
+        ''' id 已经存在'''
+
+        payload = {'eid': 1, 'name': '一加4 发布会', 'limit': 2000,
+                   'address': "深圳宝体", 'start_time': '2017'}
+        r = requests.post(self.base_url, data=payload)
+        self.result = r.json()
+        self.assertEqual(self.result['status'], 10022)
+        self.assertEqual(self.result['message'], 'event id already exists')
 
 
     def tearDown(self):
