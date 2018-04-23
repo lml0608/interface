@@ -40,8 +40,15 @@ def init_data():
     # for table,data in datas.items():
     #     MysqlHelper.insert()
 
-    sql = "insert into sign_event values(1,'红米Pro发布会',2000,1,'北京会展中心','2017-08-20 14:00:00','2017-08-19 14:00:00')"
-    logger.info("你好")
-    MysqlHelper().insert(sql=sql,params=[])
+    #sql = "insert into sign_event values(1,'红米Pro发布会',2000,1,'北京会展中心','2017-08-20 14:00:00','2017-08-19 14:00:00')"
+    #logger.info("你好")
+    #MysqlHelper().insert(sql=sql,params=[])
+
+    sql = "select id from ec_order_qrcode where product_group_id is not NULL and shelves_status=1"
+    x = MysqlHelper().fetchall(sql,params=[])
+    print(x)
+
+
+
 
 init_data()

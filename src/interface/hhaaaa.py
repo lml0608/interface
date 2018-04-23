@@ -8,25 +8,39 @@ import logging
 import unittest
 
 class telogggtLogin(unittest.TestCase):
-
-    def __init__(self, *args, **kwargs):
-        super(telogggtLogin, self).__init__(*args, **kwargs)
-        self.logger = logging.getLogger(__name__)
-
-
-        print(self.logger)
-
-    def setUp(self):
-        pass
-
-
-    def test_001(self):
-
-        self.logger.warning("nihao")
-
-    def tearDown(self):
-        print('wfw')
+    pass
 
 
 
+{
+	"addressId": 324,
+	"customerId": "16788112",
+	"customerOpenId": "oxIF2juO_PiH7gZ-j1oRIHf6RU7w",
+	"referrerOpenId": '',
+	"buyerMemo": "测试单不发货",
+	"orderDetails": [{
+		"productId": 211,
+		"quantity": 1
+	}],
+	"isPurchaseOrder": 0,
+	"orderOrigin": 0,
+	"isWebOrder": 1,
+	"virtualMoney": -0.01
+}
 
+
+{
+	"addressId": 358,
+	"customerId": "16788112",
+	"customerOpenId": "oxIF2juO_PiH7gZ-j1oRIHf6RU7w",
+	"referrerOpenId": '',
+	"buyerMemo": "",
+	"orderDetails": [{
+		"productId": 8,
+		"quantity": 1
+	}],
+	"isPurchaseOrder": 0,
+	"orderOrigin": 1,
+	"isWebOrder": 1,
+	"virtualMoney": 0
+}
